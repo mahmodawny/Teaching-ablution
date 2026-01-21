@@ -1,0 +1,130 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+header{
+    display: flex;
+}
+
+.help{
+    display: flex;
+    width: 80px;
+    height: 80px;
+    background-color: white;
+    border-radius: 50%;
+    margin-right: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.help img{
+    width: 80%;
+    height: 80%;
+    cursor: pointer;
+}
+
+
+.controls-btn{
+    width: 100%;
+    height: 100%;
+    background-color:  rgba(3, 169,244, 0.9);
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 100;
+}
+
+.controls-btn span{
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 3rem;
+    font-weight: 700;
+    padding: 10px;
+    background-color:#f44336;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.controls-btn span:hover{
+   padding: 15px;
+   font-size: 3.2rem;
+   background-color:#a82d24;
+}
+
+
+.player-info{
+    width: 1080px;
+    padding: 20px;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    background-color: antiquewhite;
+    border: 3px solid #2196f3;
+    border-radius: 16px;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.player-info div{
+    margin: 10px;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+main h1{
+    font-size: 3rem;
+    font-weight: 700;
+    color: black;
+    margin: 15px 0;   
+}
+
+.order-images, .unOrder-images{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 300px;
+}
+
+.order-images{background-color: bisque;}
+
+.unOrder-images .card{
+    margin: 10px;
+    width: 250px;
+    height: 250px;
+    border-radius: 16px;
+    border: 1px solid blueviolet;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.unOrder-images .card:hover{
+    transform: scale(1.1);
+}
+
+.unOrder-images .card img{
+    width: 100%;
+    height: 100%; 
+    padding: 5px;
+    border-radius: 16px;
+}
+
