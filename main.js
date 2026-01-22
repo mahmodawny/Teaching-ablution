@@ -1,16 +1,16 @@
-// document.querySelector('.controls-btn span').addEventListener('click', () => {
+document.querySelector('.controls-btn span').addEventListener('click', () => {
 
-//     let name = prompt("ادخل اسمك");
+    let name = prompt("ادخل اسمك");
 
-//     if (name === null || name === '') {
-//         document.querySelector('.name span').innerHTML = 'لم يتم ادخال اسم';
-//     } else {
-//         document.querySelector('.name span').innerHTML = name;
+    if (name === null || name === '') {
+        document.querySelector('.name span').innerHTML = 'لم يتم ادخال اسم';
+    } else {
+        document.querySelector('.name span').innerHTML = name;
 
-//     }
-//     document.querySelector('.controls-btn').remove()
+    }
+    document.querySelector('.controls-btn').remove()
   
-// })
+})
 
 // unOrderImages
 
@@ -20,6 +20,7 @@ let reorderImage = [...Array(images.length).keys()]
 
 let currentStep = 0;
 
+let tries = document.querySelector('.tries span')
 
 reorderImage = shuffle(reorderImage)
 
@@ -28,23 +29,53 @@ images.forEach((image , index)=>{
     image.style.order = reorderImage[index]
 
     image.addEventListener('click',()=>{
-
-        // console.log(image.dataset.ablution);
-
-        if(image.dataset.ablution === correctReorderArray[currentStep]){
-
-            console.log('good');
-
-            currentStep++
-        }
-
-        else{
-
-            console.log('bad');
-        }
+        
+        checkOrder(image)
+       
     })
 
 })
+
+let successSound = document.querySelector('.success')
+let failSound = document.querySelector('.fail')
+
+let navs = document.querySelector('.navs')
+
+function checkOrder(image){
+
+    if(image.dataset.ablution === correctReorderArray[currentStep]){
+
+
+        orderImagesContainer.appendChild(image)
+
+        image.style.order = currentStep
+
+        image.style.pointerEvents = "none"
+
+        currentStep++
+
+        successSound.play()
+
+        if (currentStep === correctReorderArray.length) {
+            let message = document.createElement('span');
+            message.innerText = "أحسنت يا " + document.querySelector('.name span').innerText;
+            navs.appendChild(message);
+
+
+        }
+
+    }
+
+    else{
+
+        failSound.play()
+
+        tries.innerHTML = parseInt(tries.innerHTML)+1
+
+    }
+
+    return image
+}
 
 function shuffle(array){
 
@@ -75,6 +106,3 @@ let correctReorderArray =  ["intention","rinsing","inhalation","Washing-the-face
 
 let orderImagesContainer = document.querySelector(".order-images")
 let orderImages = Array.from(orderImagesContainer.children)
-let correctReorderImages = [...Array(orderImages.length).keys()]
-
-
