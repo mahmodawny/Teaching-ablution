@@ -25,11 +25,8 @@ header{
     z-index: 100;
 }
 
-.navs{
-    background: none;
-}
 
-.controls-btn span ,.navs span{
+.controls-btn span{
     position: absolute;
     top: 50%;
     right: 50%;
@@ -42,10 +39,6 @@ header{
     border-radius: 10px;
     cursor: pointer;
     transition: 0.5s;
-}
-
-.navs span{
-    
 }
 
 

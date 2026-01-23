@@ -36,10 +36,19 @@ images.forEach((image , index)=>{
 
 })
 
+// order-images
+
+let orderImagesContainer = document.querySelector(".order-images")
+let orderImages = Array.from(orderImagesContainer.children)
+
+
 let successSound = document.querySelector('.success')
 let failSound = document.querySelector('.fail')
 
 let navs = document.querySelector('.navs')
+
+let correctReorderArray =  ["intention", "wash-hands" ,"rinsing","inhalation","Washing-the-face","wash-hands-elbows","head-wipe","ear-wiping","washing-feet"];
+
 
 function checkOrder(image){
 
@@ -100,9 +109,5 @@ function shuffle(array){
         return array;
 }
 
-let correctReorderArray =  ["intention","rinsing","inhalation","Washing-the-face","wash-hands-elbows","head-wipe","ear-wiping","washing-feet"];
 
-// order-images
 
-let orderImagesContainer = document.querySelector(".order-images")
-let orderImages = Array.from(orderImagesContainer.children)
