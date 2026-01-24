@@ -18,6 +18,7 @@ let unOrderImages = document.querySelector('.unOrder-images')
 let images = Array.from(unOrderImages.children)
 let reorderImage = [...Array(images.length).keys()]
 
+
 let currentStep = 0;
 
 let tries = document.querySelector('.tries span')
@@ -45,7 +46,6 @@ let orderImages = Array.from(orderImagesContainer.children)
 let successSound = document.querySelector('.success')
 let failSound = document.querySelector('.fail')
 
-let navs = document.querySelector('.navs')
 
 let correctReorderArray =  ["intention", "wash-hands" ,"rinsing","inhalation","Washing-the-face","wash-hands-elbows","head-wipe","ear-wiping","washing-feet"];
 
@@ -64,14 +64,6 @@ function checkOrder(image){
         currentStep++
 
         successSound.play()
-
-        if (currentStep === correctReorderArray.length) {
-            let message = document.createElement('span');
-            message.innerText = "أحسنت يا " + document.querySelector('.name span').innerText;
-            navs.appendChild(message);
-
-
-        }
 
     }
 
