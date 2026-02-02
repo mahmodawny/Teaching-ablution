@@ -1,13 +1,16 @@
+let playerNameValue = ''
 document.querySelector('.controls-btn span').addEventListener('click', () => {
 
     let name = prompt("ادخل اسمك");
 
     if (name === null || name === '') {
-        document.querySelector('.name span').innerHTML = 'لم يتم ادخال اسم';
+       playerNameValue = 'لم يتم ادخال اسم';
     } else {
-        document.querySelector('.name span').innerHTML = name;
+       playerNameValue = name;
 
     }
+    document.querySelector('.name span').innerHTML = playerNameValue;
+
     document.querySelector('.controls-btn').remove()
   
 })
@@ -65,6 +68,12 @@ function checkOrder(image){
 
         successSound.play()
 
+    
+        if(currentStep === correctReorderArray.length){
+           
+            putPlayerInfoInBoard()
+        }
+
     }
 
     else{
@@ -77,6 +86,49 @@ function checkOrder(image){
 
     return image
 }
+
+// putPlayerInfoInBoard function
+
+let board = document.querySelector('.honor-board')
+
+let ordered =0 ;
+
+function putPlayerInfoInBoard(){
+
+    let playerLow = document.createElement('div')
+
+    playerLow.classList.add('board-row')
+
+    board.appendChild(playerLow)
+
+    let playerOrder = document.createElement('div')
+
+    playerOrder.classList.add('player-order')
+
+    playerLow.appendChild(playerOrder)
+
+    ordered++;
+
+    playerOrder.innerHTML = ordered;
+
+    let playerName = document.createElement('div')
+
+    playerName.classList.add('player-name')
+
+    playerName .innerHTML = playerNameValue;
+
+    playerLow.appendChild(playerName)
+
+    let playerMistakes = document.createElement('div')
+
+    playerMistakes.classList.add('player-mistakes')
+
+    playerMistakes.innerHTML = tries.innerHTML
+
+    playerLow.appendChild(playerMistakes)
+
+}
+
 
 function shuffle(array){
 

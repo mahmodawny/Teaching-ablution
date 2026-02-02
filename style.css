@@ -124,73 +124,86 @@ main{
 
 
 .board {
+    margin-top: 50px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 40px;
 }
 
 .board h1 {
+    font-size: 2.5rem;
     margin-bottom: 20px;
-    font-size: 2rem;
-    color: #2c3e50;
+    color: #222;
 }
 
-/* الكارد */
+/* الكارد الرئيسي */
 .honor-board {
     width: 90%;
-    max-width: 800px;
-    background: #f8fafc;
-    border-radius: 16px;
-    padding: 15px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    max-width: 700px;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
 }
 
-/* صف اللاعب */
-.player-info {
+/* العناوين */
+.board-head {
+    display: grid;
+    grid-template-columns: 60px 1fr 120px;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #555;
+    border-bottom: 2px solid #eee;
+}
+
+/* صف لاعب */
+.board-row {
     display: grid;
     grid-template-columns: 60px 1fr 120px;
     align-items: center;
-    padding: 15px;
-    margin-bottom: 10px;
-    background: #ffffff;
+    padding: 12px;
+    margin-top: 10px;
+    background: #f9fafb;
     border-radius: 12px;
     font-size: 1.1rem;
-    font-weight: 600;
     transition: 0.3s;
-    cursor: pointer;
 }
 
-.player-info:hover {
-    transform: translateY(-3px);
-    background: #f1f5f9;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+/* تأثير عند المرور */
+.board-row:hover {
+    transform: scale(1.02);
+    background: #eef2ff;
 }
 
 /* الترتيب */
-.player-order {
-    width: 40px;
-    height: 40px;
-    background: #6366f1;
+.board-row .player-order,
+.board-head .player-order {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: #6366f1; /* لون موحد */
     color: #fff;
+    font-weight: 700;
+    font-size: 1.2rem;
+    align-items: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
+    box-shadow: 0 6px 15px rgba(99, 102, 241, 0.4);
 }
+
 
 /* الاسم */
 .player-name {
-    padding-left: 10px;
-    color: #1e293b;
+    font-size: 1.2rem;
+    font-weight: 600;
 }
 
 /* الأخطاء */
 .player-mistakes {
     text-align: center;
-    color: #ef4444;
+    font-weight: bold;
+    color: red;
 }
-
-.player-info.gold .player-order { background: gold; color: #000; }
-.player-info.silver .player-order { background: silver; }
-.player-info.bronze .player-order { background: #cd7f32; }
