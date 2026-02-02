@@ -1,5 +1,7 @@
 let playerNameValue = ''
+
 document.querySelector('.controls-btn span').addEventListener('click', () => {
+
 
     let name = prompt("ادخل اسمك");
 
@@ -127,6 +129,8 @@ function putPlayerInfoInBoard(){
 
     playerLow.appendChild(playerMistakes)
 
+    localStorage.setItem('boardHTML', board.innerHTML)
+
 }
 
 
@@ -153,5 +157,10 @@ function shuffle(array){
         return array;
 }
 
+if(localStorage.getItem('boardHTML')){
 
+    board.innerHTML = localStorage.getItem('boardHTML')
 
+}
+
+ordered = board.querySelectorAll('.board-row').length
