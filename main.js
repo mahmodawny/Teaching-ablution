@@ -91,7 +91,7 @@ function checkOrder(image){
 
 // putPlayerInfoInBoard function
 
-let board = document.querySelector('.honor-board')
+let board = document.querySelector('.player-low')
 
 let ordered =0 ;
 
@@ -100,6 +100,8 @@ function putPlayerInfoInBoard(){
     let playerLow = document.createElement('div')
 
     playerLow.classList.add('board-row')
+    
+    playerLow.dataset.mistakes = tries.innerHTML
 
     board.appendChild(playerLow)
 
@@ -129,8 +131,47 @@ function putPlayerInfoInBoard(){
 
     playerLow.appendChild(playerMistakes)
 
-    localStorage.setItem('boardHTML', board.innerHTML)
+    
+    sortBoard()
+    
+    saveBoard()
+    
+}
 
+// sort Function
+
+function sortBoard(){
+
+    let rows = Array.from(board.querySelectorAll('.board-row'))
+
+    rows.sort((a,b)=>{
+
+        let aMistakes = Number(
+            a.querySelector('.player-mistakes').innerHTML
+        )
+
+        let bMistakes = Number(
+            b.querySelector('.player-mistakes').innerHTML
+        )
+
+        return aMistakes - bMistakes
+    })
+
+    rows.forEach(row => row.remove())
+
+    rows.forEach((row,index)=>{
+        row.querySelector('.player-order').innerHTML = index + 1
+        board.appendChild(row)
+    })
+
+    saveBoard()
+}
+// saveBoard function
+
+function saveBoard(){
+
+    localStorage.setItem('boardHTML',board.innerHTML)
+    
 }
 
 
@@ -161,6 +202,18 @@ if(localStorage.getItem('boardHTML')){
 
     board.innerHTML = localStorage.getItem('boardHTML')
 
+    sortBoard()
+
 }
 
 ordered = board.querySelectorAll('.board-row').length
+
+
+document.querySelector('.board-title-btn span').addEventListener('click',()=>{
+
+    board.innerHTML ='';
+
+    localStorage.removeItem('boardHTML')
+
+    ordered = 0;
+})
